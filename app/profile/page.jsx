@@ -47,7 +47,6 @@ const Profile = async () => {
         redirect( "/" )
     }
 
-
     return (
         <div className="container">
             <div className={Styles.center}>

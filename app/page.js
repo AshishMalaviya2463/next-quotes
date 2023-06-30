@@ -11,7 +11,7 @@ const getUser = async () => {
       revalidate: 0
     }
   } )
-  const allQuotes = res.json()
+  const allQuotes = await res.json()
 
   return allQuotes
 }

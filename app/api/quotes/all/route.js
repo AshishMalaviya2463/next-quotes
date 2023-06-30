@@ -9,8 +9,11 @@ export async function GET ( req, res ) {
     const quotes = await Quote.find( {} )
 
     const getSingleUser = async ( id ) => {
-        const allUsers = await User.findOne( { _id: id } );
-        return allUsers.name
+        const allUsers = await User.findById( id );
+        if ( allUsers !== null ) {
+            return await allUsers.name
+        }
+        return "Anonymous"
     }
 
     const finalQuotesDataPromises = quotes.map( async ( quote ) => {
