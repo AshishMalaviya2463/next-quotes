@@ -1,0 +1,203 @@
+.center {
+    /* position: absolute;
+    top: 50px;
+    left: 40px; */
+    /* height: 299px !important; */
+    width: 50% !important;
+    background: #fff !important;
+    border-radius: 3px !important;
+    /* overflow: hidden !important; */
+    box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3) !important;
+    margin: 2rem auto !important;
+    display: flex !important;
+}
+
+.profile {
+    width: 70% !important;
+    /* height: 100% !important; */
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    background: #D4ADFC !important;
+    padding: 3.5rem !important;
+}
+
+.profile .image {
+    position: relative !important;
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0 auto !important;
+}
+
+.profile .image .circle_1, .profile .image .circle_2 {
+    position: absolute !important;
+    box-sizing: border-box !important;
+    width: 106px !important;
+    height: 106px !important;
+    top: -6px !important;
+    left: -3px !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #5C469C #5C469C #5C469C transparent !important;
+    border-radius: 50% !important;
+    transition: all 1.5s ease-in-out !important;
+}
+
+.profile .image .circle_2 {
+    width: 112px !important;
+    height: 112px !important;
+    top: -9px !important;
+    left: -6px !important;
+    border-color: #5C469C transparent #5C469C #5C469C !important;
+}
+
+.profile .image img {
+    display: block !important;
+    border-radius: 50% !important;
+    background: #F5E8DF !important;
+}
+
+.profile .image:hover {
+    cursor: pointer !important;
+}
+
+.profile .image:hover .circle_1, .profile .image:hover .circle_2 {
+    transform: rotate(360deg) !important;
+}
+
+.profile .image:hover .circle_2 {
+    transform: rotate(-360deg) !important;
+}
+
+.profile .name {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-top: 20px !important;
+    color: #5C469C !important;
+}
+
+.profile .job {
+    font-size: 14px !important;
+    line-height: 15px !important;
+    color: #5C469C !important;
+}
+
+.profile .actions {
+    margin-top: 33px !important;
+}
+
+.profile .actions .btn {
+    display: block !important;
+    width: 120px !important;
+    height: 30px !important;
+    margin: 0 auto 10px auto !important;
+    background: none !important;
+    border: 1px solid #786450 !important;
+    border-radius: 15px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    box-sizing: border-box !important;
+    transition: all .3s ease-in-out !important;
+    color: #786450 !important;
+}
+
+.profile .actions .btn:hover {
+    background: #786450 !important;
+    color: #fff !important;
+}
+
+.stats {
+    width: 30% !important;
+}
+
+.stats .box {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 33.25% !important;
+    background: #5C469C !important;
+    text-align: center !important;
+    transition: all .4s ease-in-out !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    color: #f3f3f3 !important;
+}
+
+.stats .box:hover {
+    background: #7758d1cf !important;
+    cursor: pointer !important;
+}
+
+.stats .box:nth-child(2) {
+    margin: 1px 0 !important;
+}
+
+.stats span {
+    display: block !important;
+}
+
+.stats .value {
+    font-size: 1.2rem !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+}
+
+.stats .parameter {
+    font-size: 0.9rem !important;
+    letter-spacing: 1px !important;
+}
+
+@media screen and (min-width: 769px) and (max-width: 990px) {
+    .center {
+        width: 75% !important;
+    }
+}
+
+@media screen and (min-width: 575px) and (max-width: 768px) {
+    .center {
+        width: 85% !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .center {
+        width: 95% !important;
+        display: block !important;
+    }
+
+    .profile {
+        width: 100% !important;
+        height: 70% !important;
+    }
+
+    .stats {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important;
+        overflow-wrap: break-word;
+    }
+
+    .stats .box {
+        height: auto !important;
+        padding: 0.5rem 0.5rem !important;
+        width: 33.30% !important;
+        overflow-wrap: break-word;
+    }
+
+    .stats .box:nth-child(2) {
+        margin: 0 !important;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .stats .box {
+        width: 50% !important;
+    }
+
+    .stats .box:last-child {
+        width: 100% !important;
+    }
+}

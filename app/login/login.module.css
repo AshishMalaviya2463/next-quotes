@@ -1,0 +1,99 @@
+.main {
+    width: 350px !important;
+    height: 500px !important;
+    background: red !important;
+    overflow: hidden !important;
+    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover !important;
+    border-radius: 10px !important;
+    box-shadow: 5px 20px 50px #000 !important;
+    position: absolute !important;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chk {
+    display: none !important;
+}
+
+.signup {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.input_label {
+    color: #573b8a !important;
+    font-size: 2.3em !important;
+    justify-content: center !important;
+    display: flex !important;
+    margin: 1.5rem 0 1rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: .5s ease-in-out !important;
+}
+
+.input {
+    width: 60% !important;
+    background: #e0dede !important;
+    justify-content: center !important;
+    display: flex !important;
+    margin: 20px auto !important;
+    padding: 10px !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 5px !important;
+}
+
+.button {
+    width: 60% !important;
+    height: 40px !important;
+    margin: 10px auto !important;
+    justify-content: center !important;
+    display: block !important;
+    color: #fff !important;
+    background: #573b8a !important;
+    font-size: 1em !important;
+    font-weight: bold !important;
+    margin-top: 20px !important;
+    outline: none !important;
+    border: none !important;
+    border-radius: 5px !important;
+    transition: .2s ease-in !important;
+    cursor: pointer !important;
+}
+
+.button:hover {
+    background: #6d44b8 !important;
+}
+
+.login {
+    height: 460px !important;
+    background: #eee !important;
+    border-radius: 60% / 10% !important;
+    transform: translateY(-6.5rem) !important;
+    transition: .8s ease-in-out !important;
+}
+
+.login .input_label {
+    color: #573b8a !important;
+    transform: scale(.6) !important;
+}
+
+.chk:checked~.login {
+    transform: translateY(-29rem) !important;
+}
+
+.chk:checked~.login .input_label {
+    transform: scale(1) !important;
+}
+
+.chk:checked~.signup .input_label {
+    transform: scale(.6) !important;
+}
+
+@media screen and (max-width: 426px) {
+    .main {
+        width: 90% !important;
+    }
+}
