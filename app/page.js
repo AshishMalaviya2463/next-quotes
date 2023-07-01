@@ -24,12 +24,14 @@ const Home = async () => {
 
   return (
     <div className={`container mt-4`}>
-      {allQuotes?.quotes?.length > 0
-        ?
-        <AllQuotesHome quotes={allQuotes?.quotes} coockieUserData={coockieUserData} />
-        :
-        <h2 className={`text-center text-secondary mt-5 pt-5`}>No Quotes Available.</h2>
-      }
+      {/* {allQuotes?.quotes?.length > 0
+        ? */}
+      <AllQuotesHome
+        // quotes={allQuotes?.quotes}
+        coockieUserData={coockieUserData} />
+      {/* : */}
+      <h2 className={`text-center text-secondary mt-5 pt-5`}>No Quotes Available.</h2>
+      {/* } */}
     </div>
   )
 }

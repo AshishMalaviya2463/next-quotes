@@ -9,7 +9,7 @@ const AllQuotesHome = ( { quotes, coockieUserData } ) => {
 
     const dispatch = useDispatch()
     const allQuotes = useSelector( state => state.allQuotes )
-    const [ finalAllQuotes, setFinalAllQuotes ] = useState( quotes )
+    const [ finalAllQuotes, setFinalAllQuotes ] = useState( [] )
 
     useEffect( () => {
         dispatch( getAllQuotesAction() )
@@ -19,7 +19,7 @@ const AllQuotesHome = ( { quotes, coockieUserData } ) => {
         if ( allQuotes?.length > 0 ) {
             setFinalAllQuotes( allQuotes )
         } else {
-            setFinalAllQuotes( quotes )
+            setFinalAllQuotes( [] )
         }
     }, [ allQuotes ] )
 
