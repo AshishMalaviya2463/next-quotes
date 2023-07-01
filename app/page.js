@@ -1,3 +1,4 @@
+import AllQuotesHome from '@/components/allQuotesHome/AllQuotesHome';
 import QuoteListItem from '@/components/quoteListItem/QuoteListItem'
 import { cookies, headers } from 'next/headers';
 import React from 'react'
@@ -25,7 +26,7 @@ const Home = async () => {
     <div className={`container mt-4`}>
       {allQuotes?.quotes?.length > 0
         ?
-        allQuotes?.quotes?.map( quote => ( <QuoteListItem key={quote._id} quote={quote} authorName={quote.author_name} loginUser={coockieUserData} /> ) )
+        <AllQuotesHome quotes={allQuotes?.quotes} coockieUserData={coockieUserData} />
         :
         <h2 className={`text-center text-secondary mt-5 pt-5`}>No Quotes Available.</h2>
       }

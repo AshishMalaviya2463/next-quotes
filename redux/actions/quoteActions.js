@@ -36,7 +36,8 @@ export const likeDislikeQuoteAction = ( id, data, token, router ) => async ( dis
         }
     } )
         .then( data => {
-            dispatch( { type: LIKE_QUOTE_DONE, payload: data?.data?.quotes } )
+            window.location.pathname === "/profile" && dispatch( { type: LIKE_QUOTE_DONE, payload: data?.data?.quotes } )
+            window.location.pathname === "/" && dispatch( getAllQuotesAction() )
             router.refresh()
         } )
         .catch( err => {
