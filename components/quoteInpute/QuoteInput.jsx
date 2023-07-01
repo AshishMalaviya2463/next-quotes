@@ -40,7 +40,7 @@ const QuoteInput = ( { authorName, user_quotes, loginUser } ) => {
         if ( editQuoteData?.isEdit === true ) {
             if ( quote?.trim()?.length >= 10 ) {
                 const userData = cookies.get( "loginUserData" )
-                dispatch( updateQuoteAction( editQuoteData?.id, { quote: quote }, userData?.token, router ) )
+                dispatch( updateQuoteAction( editQuoteData?.id, { quote: quote, userId: userData?.user?._id }, userData?.token, router ) )
                 setQuote( "" )
             } else {
                 dispatch( addErrorToastAction( "Quote must have atleast 10 characters." ) )

@@ -5,9 +5,8 @@ import { cookies, headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { authMiddleware } from "../../authMiddleware";
 
-const quoteReturnFunc = async ( message ) => {
-    const quotes = await Quote.find( {} )
-
+const quoteReturnFunc = async ( message, id ) => {
+    const quotes = await Quote.find( { authorId: id } )
     return NextResponse.json( {
         quotes: quotes.reverse(),
         message: message
@@ -36,12 +35,12 @@ export async function POST ( req, { params } ) {
                     }
                 }
             }, { new: true, runValidators: true } )
-            return quoteReturnFunc( "Quote liked successfully." )
+            return quoteReturnFunc( "Quote liked successfully.", body.userId )
         }
 
         if ( body?.like === false ) {
             await Quote.findByIdAndUpdate( id, { $pull: { likes: { userId: new ObjectId( body.userId ) } } }, { new: true, runValidators: true } )
-            return quoteReturnFunc( "Quote unliked successfully." )
+            return quoteReturnFunc( "Quote unliked successfully.", body.userId )
         }
 
         if ( body?.dislikes === true ) {
@@ -57,12 +56,12 @@ export async function POST ( req, { params } ) {
                     }
                 }
             }, { new: true, runValidators: true } )
-            return quoteReturnFunc( "Quote disliked successfully." )
+            return quoteReturnFunc( "Quote disliked successfully.", body.userId )
         }
 
         if ( body?.dislikes === false ) {
             await Quote.findByIdAndUpdate( id, { $pull: { dislikes: { userId: new ObjectId( body.userId ) } } }, { new: true, runValidators: true } )
-            return quoteReturnFunc( "Quote disliked removed successfully." )
+            return quoteReturnFunc( "Quote disliked removed successfully.", body.userId )
         }
 
         if ( body?.like === undefined && body?.dislikes === undefined ) {
@@ -81,7 +80,7 @@ export async function POST ( req, { params } ) {
                 }
 
                 await Quote.findByIdAndUpdate( id, { quote: body?.quote }, { new: true, runValidators: true } )
-                return quoteReturnFunc( "Quote updated successfully." )
+                return quoteReturnFunc( "Quote updated successfully.", body.userId )
             }
         }
     } catch ( err ) {
