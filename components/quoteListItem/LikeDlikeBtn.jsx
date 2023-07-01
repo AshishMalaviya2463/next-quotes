@@ -102,7 +102,7 @@ const LikeDlikeBtn = ( { quote, loginUser } ) => {
     }
 
     const handleClickDeleteYesBtn = () => {
-        dispatch( deleteQuoteAction( quote?._id, loginUser?.token, setDeleteModalShow, router ) )
+        dispatch( deleteQuoteAction( quote?._id, { userId: loginUser?.user?._id }, loginUser?.token, setDeleteModalShow, router ) )
     }
 
     return (

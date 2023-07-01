@@ -96,6 +96,7 @@ export async function DELETE ( req, { params } ) {
     try {
         await dbConnect()
         const { id } = params
+        const body = await req.json()
         const cookieStore = cookies()
         const headresData = headers()
         const getAuth = await authMiddleware( headresData )
@@ -111,7 +112,7 @@ export async function DELETE ( req, { params } ) {
 
         await Quote.findByIdAndDelete( id )
 
-        return quoteReturnFunc( "Quote deleted successfully." )
+        return quoteReturnFunc( "Quote deleted successfully.", body.userId )
 
     } catch ( err ) {
         return NextResponse.json( {

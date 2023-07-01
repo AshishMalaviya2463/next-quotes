@@ -65,8 +65,8 @@ export const updateQuoteAction = ( id, data, token, router ) => async ( dispatch
         } )
 }
 
-export const deleteQuoteAction = ( id, token, setDeleteModalShow, router ) => async ( dispatch ) => {
-    await axios.delete( `/api/quotes/${id}`, {
+export const deleteQuoteAction = ( id, data, token, setDeleteModalShow, router ) => async ( dispatch ) => {
+    await axios.delete( `/api/quotes/${id}`, data, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
