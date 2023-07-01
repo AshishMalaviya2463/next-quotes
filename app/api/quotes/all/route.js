@@ -8,6 +8,7 @@ export async function GET ( req, res ) {
     await dbConnect()
     const quotes = await Quote.find( {} )
 
+    await res.revalidate( '/' )
     const getSingleUser = async ( id ) => {
         const allUsers = await User.findById( id );
         if ( allUsers !== null ) {
