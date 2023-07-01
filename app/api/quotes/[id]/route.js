@@ -8,7 +8,7 @@ import { authMiddleware } from "../../authMiddleware";
 const quoteReturnFunc = async ( message, id ) => {
     const quotes = await Quote.find( { authorId: id } )
     return NextResponse.json( {
-        quotes: quotes.reverse(),
+        quotes: quotes.reverse() || [],
         message: message
     }, {
         status: 200
@@ -96,10 +96,11 @@ export async function DELETE ( req, { params } ) {
     try {
         await dbConnect()
         const { id } = params
-        const body = await req.json()
         const cookieStore = cookies()
         const headresData = headers()
         const getAuth = await authMiddleware( headresData )
+
+        const quoteToBeDelet = await Quote.findById( id )
 
         if ( getAuth === false ) {
             cookieStore.delete( "loginUserData" )
@@ -112,7 +113,7 @@ export async function DELETE ( req, { params } ) {
 
         await Quote.findByIdAndDelete( id )
 
-        return quoteReturnFunc( "Quote deleted successfully.", body.userId )
+        return quoteReturnFunc( "Quote deleted successfully.", quoteToBeDelet?.authorId )
 
     } catch ( err ) {
         return NextResponse.json( {
