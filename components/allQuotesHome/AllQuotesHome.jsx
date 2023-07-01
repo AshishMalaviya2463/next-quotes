@@ -13,6 +13,7 @@ const AllQuotesHome = ( { quotes, coockieUserData } ) => {
 
     useEffect( () => {
         dispatch( getAllQuotesAction() )
+        console.log( "useEffect called" );
     }, [] )
 
     useEffect( () => {
@@ -25,7 +26,13 @@ const AllQuotesHome = ( { quotes, coockieUserData } ) => {
 
     return (
         <>
-            {finalAllQuotes?.map( quote => ( <QuoteListItem key={quote._id} quote={quote} authorName={quote.author_name} loginUser={coockieUserData} /> ) )}
+            {
+                finalAllQuotes?.length > 0
+                    ?
+                    finalAllQuotes?.map( quote => ( <QuoteListItem key={quote._id} quote={quote} authorName={quote.author_name} loginUser={coockieUserData} /> ) )
+                    :
+                    <h2 className={`text-center text-secondary mt-5 pt-5`}>No Quotes Available.</h2>
+            }
         </>
     )
 }
