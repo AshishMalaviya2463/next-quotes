@@ -23,7 +23,7 @@ const LikeDlikeBtn = ( { quote, loginUser } ) => {
     const [ deleteModalShow, setDeleteModalShow ] = React.useState( false );
 
     useEffect( () => {
-        if ( allQuotes?.length > 0 ) {
+        if ( allQuotes?.length > 0 && pathname === "/profile" ) {
             const filteredQuote = allQuotes.filter( singleQ => singleQ?._id === quote?._id )[ 0 ]
             setFinalQuotes( filteredQuote )
         } else {

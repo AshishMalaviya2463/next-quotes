@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CLEAR_USER_QUOTE } from "../actionTypes"
+import { CLEAR_ALL_QUOTE, CLEAR_USER_QUOTE } from "../actionTypes"
 import { loadingFalseAction, loadingTrueAction } from "./loadingAction"
 import { addSuccessToastAction, addErrorToastAction } from "./toastAction"
 
@@ -30,6 +30,8 @@ export const loginAction = ( data, resetFormData, router, coockies ) => async ( 
                 user: data?.data?.user
             } )
             router.push( "/" )
+            dispatch( { type: CLEAR_USER_QUOTE } )
+            dispatch( { type: CLEAR_ALL_QUOTE } )
             dispatch( addSuccessToastAction( data?.data?.message ) )
             dispatch( loadingFalseAction() )
             router.refresh()
@@ -46,6 +48,7 @@ export const logoutAction = ( router ) => async ( dispatch ) => {
         .then( data => {
             dispatch( addSuccessToastAction( data?.data?.message ) )
             dispatch( { type: CLEAR_USER_QUOTE } )
+            dispatch( { type: CLEAR_ALL_QUOTE } )
             dispatch( loadingFalseAction() )
             router.refresh()
             router.push( "/" )

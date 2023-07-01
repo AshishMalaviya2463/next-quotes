@@ -37,7 +37,7 @@ export const likeDislikeQuoteAction = ( id, data, token, router ) => async ( dis
     } )
         .then( data => {
             dispatch( { type: LIKE_QUOTE_DONE, payload: data?.data?.quotes } )
-            window.location.pathname === "/profile" && router.refresh()
+            router.refresh()
         } )
         .catch( err => {
             dispatch( addErrorToastAction( err?.response?.data?.message ) )
