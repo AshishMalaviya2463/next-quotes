@@ -8,7 +8,7 @@ const getUser = async () => {
   const host = headersData.get( "host" );
   const res = await fetch( `${protocol}://${host}/api/quotes/all`, {
     next: {
-      revalidate: 0
+      revalidate: 10
     }
   } )
   const allQuotes = await res.json()
