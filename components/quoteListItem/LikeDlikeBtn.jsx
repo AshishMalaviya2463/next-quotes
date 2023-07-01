@@ -60,6 +60,7 @@ const LikeDlikeBtn = ( { quote, loginUser } ) => {
         }
     }
 
+
     const handleClickLikeFillBtn = () => {
         if ( loginUser === undefined ) {
             router.push( "/login" )
