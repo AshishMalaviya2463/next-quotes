@@ -9,7 +9,6 @@ const getAllQuotes = async () => {
   let res = await fetch( `${protocol}://${host}/api/quotes/all`, { next: { tags: [ 'collection' ] } } )
 
   const allQuotes = await res.json()
-
   return allQuotes
 }
 
