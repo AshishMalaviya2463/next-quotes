@@ -6,9 +6,10 @@ const getUser = async () => {
   const headersData = headers();
   const protocol = headersData.get( "x-forwarded-proto" );
   const host = headersData.get( "host" );
-  const res = await fetch( `${protocol}://${host}/api/quotes/all`, {
+  let res = await fetch( `${protocol}://${host}/api/quotes/all`, {
     cache: "no-cache"
   } )
+  res.revalidate = 10
   const allQuotes = await res.json()
 
   return allQuotes
