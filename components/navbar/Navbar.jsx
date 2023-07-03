@@ -2,8 +2,8 @@ import axios from 'axios'
 import { cookies, headers } from 'next/headers'
 import Link from 'next/link'
 import React from 'react'
-import LogOutBtn from './LogOutBtn'
 import Styles from "./navbar.module.css"
+import NavMenu from './NavMenu'
 
 const getUser = async () => {
     const cookieStore = cookies()
@@ -42,28 +42,11 @@ const Navbar = async () => {
 
     return (
         <div className={`${Styles.nav_container}`} >
-            <div className={`container d-flex justify-content-between align-items-center`}>
+            <div className={`container d-flex justify-content-between align-items-center ${Styles.position_relative}`}>
                 <h1 className={`m-0 p-0 ${Styles.nav_logo}`}>
                     <Link href={"/"}>QuoteVerse</Link>
                 </h1>
-                <ul>
-                    {
-                        loginUser !== undefined ?
-                            loginUser?.login === false ?
-                                ( <>
-                                    <li>
-                                        <Link href={"/login"}>Login</Link>
-                                    </li>
-                                </> )
-                                : ( <>
-                                    <li>
-                                        <Link href={"/profile"}>Profile</Link>
-                                    </li>
-                                    <LogOutBtn />
-                                </> )
-                            : null
-                    }
-                </ul>
+                <NavMenu loginUser={loginUser} />
             </div>
         </div>
     )
