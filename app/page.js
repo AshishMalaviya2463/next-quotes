@@ -2,14 +2,12 @@ import QuoteListItem from '@/components/quoteListItem/QuoteListItem'
 import { cookies, headers } from 'next/headers';
 import React from 'react'
 
-const getUser = async () => {
+const getAllQuotes = async () => {
   const headersData = headers();
   const protocol = headersData.get( "x-forwarded-proto" );
   const host = headersData.get( "host" );
-  let res = await fetch( `${protocol}://${host}/api/quotes/all`, {
-    cache: "no-cache"
-  } )
-  res.revalidate = 10
+  let res = await fetch( `${protocol}://${host}/api/quotes/all`, { next: { tags: [ 'collection' ] } } )
+
   const allQuotes = await res.json()
 
   return allQuotes
@@ -17,7 +15,7 @@ const getUser = async () => {
 
 const Home = async () => {
 
-  const allQuotes = await getUser()
+  const allQuotes = await getAllQuotes()
   const cookieStore = cookies()
   const userData = cookieStore.get( "loginUserData" )
   const coockieUserData = userData === undefined ? undefined : JSON.parse( userData?.value )

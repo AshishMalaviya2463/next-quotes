@@ -3,6 +3,7 @@ import Quote from "@/backend/models/quoteModel";
 import User from "@/backend/models/userModel";
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb"
+import { revalidateTag } from "next/cache";
 
 export async function GET ( req, res ) {
     await dbConnect()
@@ -33,6 +34,9 @@ export async function GET ( req, res ) {
         }
     } );
 
+    const tag = req.nextUrl.searchParams.get( 'tag' )
+    revalidateTag( tag )
+
     const finalQuotesDataResults = await Promise.all( finalQuotesDataPromises );
     const finalQuotesData = finalQuotesDataResults.filter( ( data ) => data !== undefined );
 
@@ -40,5 +44,8 @@ export async function GET ( req, res ) {
         quotes: finalQuotesData.reverse()
     }, {
         status: 200
+    }, {
+        revalidated: true,
+        now: Date.now()
     } )
 }
