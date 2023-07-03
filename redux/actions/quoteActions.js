@@ -19,10 +19,8 @@ export const addQuoteAction = ( data, token, router ) => async ( dispatch ) => {
 }
 
 export const getAllQuotesAction = () => async ( dispatch ) => {
-    console.log( "getAllQuotesAction called" )
     await axios.get( `/api/quotes/all` )
         .then( data => {
-            console.log( "data get", data?.data?.quotes )
             dispatch( { type: GET_ALL_QUOTES, payload: data?.data?.quotes } )
         } )
         .catch( err => {

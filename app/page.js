@@ -25,7 +25,7 @@ const Home = async () => {
       {
         allQuotes?.quotes?.length > 0
           ?
-          allQuotes?.quotes?.map( quote => ( <QuoteListItem key={quote._id} quote={quote} authorName={quote.author_name} coockieUserData={coockieUserData} /> ) )
+          allQuotes?.quotes?.map( quote => ( <QuoteListItem key={quote._id} quote={quote} authorName={quote.author_name} loginUser={coockieUserData} /> ) )
           :
           <h2 className={`text-center text-secondary mt-5 pt-5`}>No Quotes Available.</h2>
       }
